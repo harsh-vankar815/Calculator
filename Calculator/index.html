@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="display">
+            <input class="display-in" type="text" disabled>
+        </div>
+        <div class="buttons">
+            <input class="btn num-exp" type="button" value="9">
+            <input class="btn num-exp" type="button" value="8">
+            <input class="btn num-exp" type="button" value="7">
+            <input class="btn num-exp" type="button" value="6">
+            <input class="btn num-exp" type="button" value="5">
+            <input class="btn num-exp" type="button" value="4">
+            <input class="btn num-exp" type="button" value="3">
+            <input class="btn num-exp btn2" type="button" value="2">
+            <input class="btn num-exp" type="button" value="1">
+            <input class="btn num-exp" type="button" value="0">
+            <input class="btn num-exp btn-div" type="button" value="/">
+            <input class="btn num-exp btn-mul" type="button" value="*">
+            <input class="btn num-exp btn-min" type="button" value="-">
+            <input class="btn num-exp btn-add" type="button" value="+">
+            <input class="btn btn-eq" type="button" value="=">
+            <input class="btn num-exp btn-float" type="button" value=".">
+            <input class="btn btn-clear" type="button" value="AC">
+            <input class="btn num-exp" type="button" value="%">
+            <input class="btn btn-back" type="button" value="Back">
+        </div>
+    </div>
+
+    <script>
+        // accessing display box
+        let display = document.querySelector(".display").firstElementChild
+
+        // Clear Display
+        document.querySelector(".btn-clear").addEventListener("click", () => {
+            display.value = ""
+        })
+
+        // Num-expbers
+        document.querySelectorAll('.num-exp').forEach(element => {
+            element.addEventListener("click", () => { display.value += element.value })
+        });
+
+        // Equal to
+        document.querySelector(".btn-eq").addEventListener("click", () => {
+            try {
+                display.value = eval(display.value);
+                if (display.value === 'undefined') {
+                    display.value = "";
+                }
+            } catch {
+                display.value = "Error";
+            }
+        })
+
+        // Backspace functionality
+        document.querySelector(".btn-back").addEventListener("click", () => {
+            display.value = display.value.slice(0, -1);
+        });
+
+    </script>
+</body>
+
+</html>
